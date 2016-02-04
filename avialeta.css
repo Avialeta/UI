@@ -1,0 +1,34 @@
+.mdl-layout__content {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.mdl-layout__content {
+    position: relative;
+}
+
+.mdl-layout__content .curtain {
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.2;
+}
+
+.mdl-layout__content .mdl-spinner {
+    z-index: 10;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.mdl-data-table {
+    width: 100%;
+}
+
+.mdl-data-table th:first-child,
+.mdl-data-table td:first-child {
+    width: 100%;
+    text-align: left;
+}

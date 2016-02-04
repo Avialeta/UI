@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Avialeta</title>
+    <link href="https://code.getmdl.io/1.1.1/material.blue-orange.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="avialeta.css" rel="stylesheet"/>
+    <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script defer src="avialeta.js"></script>
+</head>
+<body class="mdl-color--grey-100 mdl-color-text--grey-700">
+
+<div class="mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <div class="mdl-layout-icon material-icons">flights</div>
+            <h1 class="mdl-layout__title">Avialeta</h1>
+        </div>
+    </header>
+
+    <div class="mdl-layout__content mdl-color--white mdl-shadow--2dp">
+        <div class="curtain hidden"></div>
+        <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner"></div>
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col">
+                <form>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <label class="mdl-textfield__label" for="pointA">Point A</label>
+                        <input class="mdl-textfield__input" type="text" id="pointA" list="pointA-l"/>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <label class="mdl-textfield__label" for="pointB">Point A</label>
+                        <input class="mdl-textfield__input" type="text" id="pointB" list="pointB-l"/>
+                    </div>
+
+                    <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit"
+                           value="Search"/>
+                </form>
+            </div>
+
+            <div class="mdl-cell mdl-cell--8-col">
+                <table class="mdl-data-table mdl-shadow--2dp not-visible hidden">
+                    <thead>
+                    <tr>
+                        <th>
+                            Flights
+                        </th>
+                        <th>Cost</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <ul class="demo-list-icon mdl-list">
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-icon">flight_takeoff</i>
+                                        Foo
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-icon">flight_land</i>
+                                        Bar
+                                    </span>
+                                </li>
+                            </ul>
+                        </td>
+                        <td>$42.00</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <button id="demo-show-snackbar" class="mdl-button mdl-js-button mdl-button--raised" type="button">Show Snackbar</button>
+</div>
+
+<div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+
+</body>
+</html>
