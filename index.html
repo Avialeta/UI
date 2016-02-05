@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Avialeta</title>
     <link href="https://code.getmdl.io/1.1.1/material.blue-orange.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link href="avialeta.css" rel="stylesheet"/>
     <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
@@ -29,12 +29,22 @@
                 <form>
                     <div class="mdl-textfield mdl-js-textfield">
                         <label class="mdl-textfield__label" for="pointA">Point A</label>
-                        <input class="mdl-textfield__input" type="text" id="pointA" list="pointA-l"/>
+                        <input class="mdl-textfield__input" type="text" id="pointA" list="listA"/>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield">
                         <label class="mdl-textfield__label" for="pointB">Point A</label>
-                        <input class="mdl-textfield__input" type="text" id="pointB" list="pointB-l"/>
+                        <input class="mdl-textfield__input" type="text" id="pointB" list="listB"/>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="outboundDate"/>
+                        <lable class="mdl-textfield__label" for="outboundDate">YYYY-MM-DDD</lable>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="inboundDate"/>
+                        <lable class="mdl-textfield__label" for="inboundDate">YYYY-MM-DD</lable>
                     </div>
 
                     <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit"
@@ -42,41 +52,45 @@
                 </form>
             </div>
 
-            <div class="mdl-cell mdl-cell--8-col">
-                <table class="mdl-data-table mdl-shadow--2dp not-visible hidden">
-                    <thead>
-                    <tr>
-                        <th>
-                            Flights
-                        </th>
-                        <th>Cost</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <ul class="demo-list-icon mdl-list">
-                                <li class="mdl-list__item">
-                                    <span class="mdl-list__item-primary-content">
-                                        <i class="material-icons mdl-list__item-icon">flight_takeoff</i>
-                                        Foo Foo Foo
-                                    </span>
-                                </li>
-                                <li class="mdl-list__item">
-                                    <span class="mdl-list__item-primary-content">
-                                        <i class="material-icons mdl-list__item-icon">flight_land</i>
-                                        Bar Bar Bar
-                                    </span>
-                                </li>
-                            </ul>
-                        </td>
-                        <td>$42.00</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="result mdl-cell mdl-cell--8-col">
             </div>
         </div>
     </div>
+</div>
+
+<div class="templates hidden">
+    <datalist id="">
+        <option value=""/>
+    </datalist>
+
+    <table class="mdl-data-table mdl-shadow--2dp not-visible">
+        <thead>
+        <tr>
+            <th>Flights</th>
+            <th>Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="mdl-list">
+        <li class="mdl-list__item">
+            <!--<span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">flight_takeoff</i>
+            </span>-->
+        </li>
+        <li class="mdl-list__item">
+            <!--<span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">flight_land</i>
+            </span>-->
+        </li>
+    </ul>
+
 </div>
 
 </body>
