@@ -17,6 +17,7 @@
         <div class="mdl-layout__header-row">
             <div class="mdl-layout-icon material-icons">flights</div>
             <h1 class="mdl-layout__title">Avialeta</h1>
+
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="statistic.html">Statistic</a>
@@ -42,13 +43,13 @@
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" id="outboundDate"/>
-                        <lable class="mdl-textfield__label" for="outboundDate">YYYY-MM-DDD</lable>
+                        <label class="mdl-textfield__label" for="outboundDate">YYYY-MM-DDD</label>
+                        <input class="mdl-textfield__input" type="text" name="outboundDate" id="outboundDate"/>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield">
+                        <label class="mdl-textfield__label" for="inboundDate">YYYY-MM-DD</label>
                         <input class="mdl-textfield__input" type="text" id="inboundDate"/>
-                        <lable class="mdl-textfield__label" for="inboundDate">YYYY-MM-DD</lable>
                     </div>
 
                     <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit"
@@ -64,7 +65,7 @@
 
 <div class="templates hidden">
     <datalist id="">
-        <option value=""/>
+        <option value=""></option>
     </datalist>
 
     <table class="mdl-data-table mdl-shadow--2dp not-visible">
