@@ -1,16 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var ws = new WebSocket('ws://' + window.location.hostname + '/api/statistic');
+    var ws = new WebSocket('ws://' + window.location.hostname + ':8080/statistic');
 
-    /*webSocket.onopen = function(event) {
-        alert('onopen');
-        webSocket.send("Hello Web Socket!");
+    ws.onopen = function(event) {};
+
+    ws.onmessage = function(event) {
+        console.log(event.data);
     };
 
-    webSocket.onmessage = function(event) {
-        alert('onmessage, ' + event.data);
-    };
-
-    webSocket.onclose = function(event) {
-        alert('onclose');
-    };*/
+    ws.onclose = function(event) {};
 });

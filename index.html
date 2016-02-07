@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link href="avialeta.css" rel="stylesheet"/>
     <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
-    <script defer src="avialeta.js"></script>
+    <script defer src="js/avialeta.js"></script>
 </head>
 <body class="mdl-color--grey-100 mdl-color-text--grey-700">
 
@@ -34,12 +34,14 @@
                 <form>
                     <div class="mdl-textfield mdl-js-textfield">
                         <label class="mdl-textfield__label" for="pointA">Point A</label>
-                        <input class="mdl-textfield__input" type="text" id="pointA" list="listA"/>
+                        <input class="mdl-textfield__input" type="text" id="pointA"/>
+                        <input type="hidden" id="pointACode"/>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield">
                         <label class="mdl-textfield__label" for="pointB">Point A</label>
-                        <input class="mdl-textfield__input" type="text" id="pointB" list="listB"/>
+                        <input class="mdl-textfield__input" type="text" id="pointB"/>
+                        <input type="hidden" id="pointBCode"/>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield">
