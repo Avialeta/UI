@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var spinner = document.querySelector('.mdl-spinner');
     var result = document.querySelector('.result');
 
-    var xhrFlights = new XMLHttpRequest();
-
     var tplDatalist = document.querySelector('.templates datalist');
     var tplTable = document.querySelector('.templates .mdl-data-table');
     var tplList = document.querySelector('.templates .mdl-list');
@@ -19,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    var xhrFlights = new XMLHttpRequest();
     xhrFlights.addEventListener('load', function() {
         var flights = {};
 
@@ -57,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // TODO: test values
         //values = 'pointA=Minsk&pointB=Petersburg&outboundDate=2016-02-06&inboundDate=2016-02-12';
+        //values = 'pointA=Minsk&pointB=Petersburg&outboundDate=2016-02-09&inboundDate=';
 
         xhrFlights.open('GET', api + '/flights?' + values, true);
         xhrFlights.send();
@@ -105,11 +105,27 @@ document.addEventListener('DOMContentLoaded', function () {
         table = tplTable.cloneNode(true);
         var tbody = table.querySelector('tbody');
         var row = tbody.querySelector('tr');
-        for(var key in flights.variants) {
-            variants = flights.variants[key];
+        for(var i in flights.variants) {
+            var variants = flights.variants[i];
 
             var td = row.querySelectorAll('td');
-            td[0].innerHTML = "flights";
+            var list = tplList.cloneNode(true);
+            var departure = list.querySelector('.departure').cloneNode(true);
+            var arrival = list.querySelector('.arrival').cloneNode(true);
+            list.removeChild(list.querySelector('.departure'));
+            list.removeChild(list.querySelector('.arrival'));
+            for (var j in variants.segments[0].flights) {
+                var flight = variants.segments[0].flights[j];
+                var item = '';
+                item += flight.departure + " " + flight.departureDate + " " + flight.departureTime;
+                item += ' -> '
+                item += flight.arrival + " " + flight.arrivalDate + " " + flight.arrivalTime;
+                departure.innerHTML = item;
+                list.appendChild(departure);
+                departure = departure.cloneNode(true);
+            }
+
+            td[0].appendChild(list);
             td[1].innerHTML = variants.currency + ' ' + variants.price;
 
             tbody.appendChild(row);
@@ -121,24 +137,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function outputLocations(locations, target) {
         var textfield = target.parentElement;
-        var datalist = textfield.querySelector('datalist');
-        if (datalist) {
-            textfield.removeChild(datalist);
-        }
 
-        if (!locations.length) {
-            return;
-        }
+        var datalist = textfield.querySelector('datalist');
+        if (datalist) { textfield.removeChild(datalist); }
+
+        if (!locations.length) { return; }
 
         datalist = tplDatalist.cloneNode(true);
         datalist.id = target.getAttribute('list');
 
-        var lastOption = datalist.querySelector('option');
-        for(var i = 0; i < locations.length; i++) {
-            var option = lastOption.cloneNode(true);
+        var option = datalist.querySelector('option');
+        for(var i in locations) {
             option.value = locations[i].Name;
             datalist.appendChild(option);
-            lastOption = option;
+            option = option.cloneNode(true);
         }
 
         textfield.appendChild(datalist);
