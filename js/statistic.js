@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var ws = new WebSocket('ws://' + window.location.hostname + ':8080/statistic');
+    /*var ws = new WebSocket('ws://' + window.location.hostname + ':8080/statistic');
 
     ws.onopen = function(event) {};
 
@@ -7,5 +7,5 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(event.data);
     };
 
-    ws.onclose = function(event) {};
+    ws.onclose = function(event) {};*/
 });

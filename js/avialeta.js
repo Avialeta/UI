@@ -33,6 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
             case 500:
                 alert('error');
                 break;
+
+            // TODO: Remove dirty hack!
+            case 502:
+                xhrFlights.open('GET', event.target.responseURL, true);
+                xhrFlights.send();
+                return;
         }
 
         outputFlights(flights);
@@ -58,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //values = 'pointA=Minsk&pointB=Petersburg&outboundDate=2016-02-06&inboundDate=2016-02-12';
         //values = 'pointA=Minsk&pointB=Petersburg&outboundDate=2016-02-09&inboundDate=';
 
-        xhrFlights.open('GET', api + '/flights?' + values, true);
+        xhrFlights.open('GET', api + '/flights/?' + values, true);
         xhrFlights.send();
     }
 
@@ -79,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
             outputLocations(locations, target);
         }, false);
 
-        xhrLocations.open('GET', api + '/locations?search=' + target.value, true);
+        xhrLocations.open('GET', api + '/locations/?search=' + target.value, true);
         xhrLocations.send();
     }
 
