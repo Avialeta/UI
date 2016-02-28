@@ -122,15 +122,17 @@ document.addEventListener('DOMContentLoaded', function () {
             list.removeChild(list.querySelector('.arrival'));
             for (var j in variants.segments[0].flights) {
                 var flight = variants.segments[0].flights[j];
+                var airline = document.createTextNode("Airline: " + flight.airline);
                 var item = '';
-                item += flight.departure + " " + flight.departureDate + " " + flight.departureTime;
-                item += ' -> '
-                item += flight.arrival + " " + flight.arrivalDate + " " + flight.arrivalTime;
+                item += flight.departure + " " + flight.departureDate;
+                item += ' -> ';
+                item += flight.arrival + " " + flight.arrivalDate;
                 departure.innerHTML = item;
                 list.appendChild(departure);
                 departure = departure.cloneNode(true);
             }
 
+            td[0].appendChild(airline);
             td[0].appendChild(list);
             td[1].innerHTML = variants.currency + ' ' + variants.price;
 
