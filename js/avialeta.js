@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // TODO: test values
-        //values = 'pointA=Minsk&pointB=Petersburg&outboundDate=2016-02-06&inboundDate=2016-02-12';
+        values = 'pointA=Minsk&pointB=Pulkovo&outboundDate=2016-03-02&inboundDate=2016-03-03';
         //values = 'pointA=Minsk&pointB=Petersburg&outboundDate=2016-02-09&inboundDate=';
 
         xhrFlights.open('GET', api + '/flights/?' + values, true);
@@ -121,14 +121,15 @@ document.addEventListener('DOMContentLoaded', function () {
             td[1].innerHTML = '';
 
             var list = tplList.cloneNode(true);
-            var departure = list.querySelector('.departure').cloneNode(true);
-            var arrival = list.querySelector('.arrival').cloneNode(true);
-            list.removeChild(list.querySelector('.departure'));
-            list.removeChild(list.querySelector('.arrival'));
+            var departure = list.querySelector('li').cloneNode(true);
+            var arrival = list.querySelector('li').cloneNode(true);
+            list.querySelector('li').remove();
+            //list.removeChild(list.querySelector('.departure'));
+            //list.removeChild(list.querySelector('.arrival'));
             for (var j in variants.segments[0].flights) {
                 var flight = variants.segments[0].flights[j];
-                var airline = document.createTextNode("Airline: " + flight.airline);
                 var item = '';
+                item += flight.airline + " ";
                 item += flight.departure + " " + flight.departureDate;
                 item += ' -> ';
                 item += flight.arrival + " " + flight.arrivalDate;
@@ -140,8 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (variants.segments.length > 1 ) {
                 for (var j in variants.segments[1].flights) {
                     var flight = variants.segments[1].flights[j];
-                    //var airline = document.createTextNode("Airline: " + flight.airline);
                     var item = '';
+                    item += flight.airline + " ";
                     item += flight.arrival + " " + flight.arrivalDate;
                     item += ' <- ';
                     item += flight.departure + " " + flight.departureDate;
@@ -151,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            td[0].appendChild(airline);
+            //td[0].appendChild(airline);
             td[0].appendChild(list);
             td[1].innerHTML = variants.currency + ' ' + variants.price;
 
@@ -162,6 +163,52 @@ document.addEventListener('DOMContentLoaded', function () {
 
         result.appendChild(table);
     }
+
+    /*function outputFlights(resp) {
+        if (!Object.keys(resp).length || !Object.keys(resp.variants).length) {
+            return;
+        }
+
+        var table = tplTable.cloneNode(true);
+        table.querySelector('tbody tr').remove();
+
+        for(var i in resp.variants) {
+            var variant = resp.variants[i];
+
+            var row = tplTable.querySelector('tbody tr').cloneNode(true);
+
+            for (var j in variant.segments) {
+                var segment = variant.segments[j];
+
+                var td = tplTable.querySelectorAll('tbody tr td');
+                var list = tplList.cloneNode(true);
+                list.querySelector('li').remove();
+
+                for(var k in segment.flights) {
+                    var flight = segment.flights[k];
+
+                    var item = tplList.querySelector('li').cloneNode(true);
+                    item += flight.departure + " " + flight.departureDate;
+                    item += ' - ';
+                    item += flight.arrival + " " + flight.arrivalDate;
+                }
+
+                td[0].appendChild(list);
+                td[1].innerHTML = variant.currency + ' ' + variant.price;
+            }
+
+            table.querySelector('tbody').appendChild(row);
+        }
+
+        // Clear old results.
+        var oldTable = result.querySelector('table.mdl-data-table');
+        if (oldTable) {
+            result.removeChild(oldTable);
+        }
+
+        // Add new results.
+        result.appendChild(table);
+    }*/
 
     function outputLocations(locations, target) {
         var textfield = target.parentElement;
