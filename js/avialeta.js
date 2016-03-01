@@ -115,6 +115,11 @@ document.addEventListener('DOMContentLoaded', function () {
             var variants = flights.variants[i];
 
             var td = row.querySelectorAll('td');
+            td[0] = td[0].cloneNode(true);
+            td[1] = td[1].cloneNode(true);
+            td[0].innerHTML = '';
+            td[1].innerHTML = '';
+
             var list = tplList.cloneNode(true);
             var departure = list.querySelector('.departure').cloneNode(true);
             var arrival = list.querySelector('.arrival').cloneNode(true);
@@ -132,12 +137,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 departure = departure.cloneNode(true);
             }
 
+            if (variants.segments.length > 1 ) {
+                for (var j in variants.segments[1].flights) {
+                    var flight = variants.segments[1].flights[j];
+                    //var airline = document.createTextNode("Airline: " + flight.airline);
+                    var item = '';
+                    item += flight.arrival + " " + flight.arrivalDate;
+                    item += ' <- ';
+                    item += flight.departure + " " + flight.departureDate;
+                    departure.innerHTML = item;
+                    list.appendChild(departure);
+                    departure = departure.cloneNode(true);
+                }
+            }
+
             td[0].appendChild(airline);
             td[0].appendChild(list);
             td[1].innerHTML = variants.currency + ' ' + variants.price;
 
             tbody.appendChild(row);
             row = row.cloneNode(true);
+            //row = tplTable.querySelector('tr').cloneNode(true);
         }
 
         result.appendChild(table);
