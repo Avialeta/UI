@@ -61,8 +61,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // TODO: test values
-        //values = 'pointA=Minsk&pointB=Pulkovo&outboundDate=2016-03-02&inboundDate=2016-03-03';
+        //values = 'pointA=Minsk&pointB=Moscow&outboundDate=2016-03-02&inboundDate=2016-03-03';
         //values = 'pointA=Minsk&pointB=Petersburg&outboundDate=2016-02-09&inboundDate=';
+        //values = 'pointA=Minsk&pointB=Moscow&outboundDate=2016-03-13&inboundDate=';
+        //values = 'pointA=Moscow&pointB=Minsk&outboundDate=2016-03-13&inboundDate=';
 
         xhrFlights.open('GET', api + '/flights/?' + values, true);
         xhrFlights.send();
