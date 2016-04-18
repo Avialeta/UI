@@ -135,6 +135,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 item += flight.departure + " " + flight.departureDate;
                 item += ' -> ';
                 item += flight.arrival + " " + flight.arrivalDate;
+                if (flight.timeDiff != '') {
+                    item += '<br/>Diff: ' + flight.timeDiff;
+                }
                 departure.innerHTML = item;
                 list.appendChild(departure);
                 departure = departure.cloneNode(true);
