@@ -10,6 +10,34 @@ document.addEventListener('DOMContentLoaded', function () {
     var tplTable = document.querySelector('.templates .mdl-data-table');
     var tplList = document.querySelector('.templates .mdl-list');
 
+    var filters = document.querySelectorAll('.filter input');
+    for (var i = 0; i < filters.length; i++) {
+        filters[i].addEventListener('click', function(e) {
+            console.log(e.target.value);
+
+            var lists = document.querySelectorAll('.result .mdl-list')
+            if (!lists.length) {
+                return
+            }
+
+            for (var i = 0; i < lists.length; i++) {
+                lists[i].closest('tr').classList.remove('hidden');
+            }
+
+            if (e.target.value == 0) {
+                return
+            }
+
+            for (var i = 0; i < lists.length; i++) {
+                var items = lists[i].querySelectorAll('.mdl-list__item');
+
+                if (items.length != e.target.value) {
+                    lists[i].closest('tr').classList.add('hidden');
+                }
+            }
+        }, false);
+    }
+
     form.addEventListener('submit', searchFlights, false);
     for (var i = 0; i < inputs.length; i++) {
         if (inputs[i].id == 'pointA' || inputs[i].id == 'pointB') {
@@ -45,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         loadingToggle();
     }, false);
-
 
     function searchFlights(event) {
         event.preventDefault();
