@@ -271,4 +271,9 @@ document.addEventListener('DOMContentLoaded', function () {
         curtain.classList.toggle('hidden');
         spinner.classList.toggle('is-active');
     }
+
+    $(function() {
+        $("#outboundDate").datepicker();
+        $("#inboundDate").datepicker();
+    });
 });
