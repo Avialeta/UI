@@ -273,7 +273,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     $(function() {
-        $("#outboundDate").datepicker();
-        $("#inboundDate").datepicker();
+        $("#outboundDate").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+        $("#inboundDate").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
     });
 });
